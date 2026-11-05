@@ -165,16 +165,16 @@ export default function Hero({
         </div>
 
         {/* SOCIAL ICONS USING LUCIDE-REACT */}
-        <div className="mt-10 flex gap-5 md:gap-6 items-center text-neutral-400">
+        <div className="mt-10 flex gap-2 md:gap-4 items-center text-neutral-400">
           {socialLinks.whatsapp && (
             <a
               href={socialLinks.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Direct WhatsApp Message"
-              className="hover:text-white transition-colors p-1"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 transition-all duration-300 ease-out hover:scale-110 hover:text-[#25D366] hover:drop-shadow-[0_0_8px_rgba(37,211,102,0.8)] will-change-transform"
             >
-              <MessageCircle className="w-4 h-4 md:w-5 md:h-5 cursor-pointer text-[#25D366]" />
+              <MessageCircle className="w-4 h-4 md:w-5 md:h-5 cursor-pointer text-neutral-400 group-hover:text-[#25D366] transition-colors" />
             </a>
           )}
           {socialLinks.linkedin && (
@@ -183,9 +183,9 @@ export default function Hero({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="hover:text-white transition-colors p-1"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 transition-all duration-300 ease-out hover:scale-110 hover:text-[#0077B5] hover:drop-shadow-[0_0_8px_rgba(0,119,181,0.8)] will-change-transform"
             >
-              <Linkedin className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" />
+              <Linkedin className="w-4 h-4 md:w-5 md:h-5 cursor-pointer transition-colors" />
             </a>
           )}
           {socialLinks.github && (
@@ -194,9 +194,9 @@ export default function Hero({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="hover:text-white transition-colors p-1"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 transition-all duration-300 ease-out hover:scale-110 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] will-change-transform"
             >
-              <Github className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" />
+              <Github className="w-4 h-4 md:w-5 md:h-5 cursor-pointer transition-colors" />
             </a>
           )}
           {socialLinks.instagram && (
@@ -205,9 +205,9 @@ export default function Hero({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram Profile"
-              className="hover:text-white transition-colors p-1"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 transition-all duration-300 ease-out hover:scale-110 hover:text-[#E1306C] hover:drop-shadow-[0_0_8px_rgba(225,48,108,0.8)] will-change-transform"
             >
-              <Instagram className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" />
+              <Instagram className="w-4 h-4 md:w-5 md:h-5 cursor-pointer transition-colors" />
             </a>
           )}
           {socialLinks.facebook && (
@@ -216,18 +216,18 @@ export default function Hero({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook Profile"
-              className="hover:text-white transition-colors p-1"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 transition-all duration-300 ease-out hover:scale-110 hover:text-[#1877F2] hover:drop-shadow-[0_0_8px_rgba(24,119,242,0.8)] will-change-transform"
             >
-              <Facebook className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" />
+              <Facebook className="w-4 h-4 md:w-5 md:h-5 cursor-pointer transition-colors" />
             </a>
           )}
           {socialLinks.email && (
             <a
               href={socialLinks.email}
               aria-label="Direct Email"
-              className="hover:text-white transition-colors p-1"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 transition-all duration-300 ease-out hover:scale-110 hover:text-[#d4af37] hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.8)] will-change-transform"
             >
-              <Mail className="w-4 h-4 md:w-5 md:h-5 cursor-pointer text-[#d4af37]" />
+              <Mail className="w-4 h-4 md:w-5 md:h-5 cursor-pointer transition-colors" />
             </a>
           )}
         </div>
