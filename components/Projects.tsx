@@ -133,7 +133,7 @@ export default function Projects({
       <div className="max-w-7xl mx-auto">
         
         {/* 1. HEADER AREA */}
-        <div ref={headerRef} className="mb-24 md:mb-32">
+        <div ref={headerRef} className="relative z-20 mb-32 md:mb-48 lg:mb-64">
           {/* Eyebrow */}
           <p className="text-xs tracking-widest text-[#d4af37] mb-8 uppercase flex items-center gap-4 font-mono">
             <span className="w-2 h-2 bg-[#d4af37] inline-block shrink-0"></span>
@@ -173,7 +173,7 @@ export default function Projects({
         </div>
 
         {/* 2. VERTICAL PROJECT STACK (MASSIVE NEGATIVE SPACE, NO CLUTTERED CARDS) */}
-        <div className="space-y-36 md:space-y-64">
+        <div className="relative z-10 space-y-36 md:space-y-64">
           {projects.map((project) => {
             const projectId = project.id || `project-${project.index}`;
             const embedUrl = getYouTubeEmbedUrl(project.youtubeUrl);
