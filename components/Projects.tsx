@@ -112,7 +112,9 @@ export default function Projects({
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, [lang, projects]);
 
   const toggleMedia = (id: string, currentIsVideo: boolean) => {
