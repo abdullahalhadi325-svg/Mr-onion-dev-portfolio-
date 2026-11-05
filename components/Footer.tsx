@@ -175,10 +175,11 @@ export default function Footer({
               </a>
               <button
                 onClick={() => copyToClipboard(whatsappNumber, 'phone')}
-                className="p-1 hover:text-white transition-colors cursor-pointer"
+                aria-label="Copy WhatsApp Number"
+                className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2 hover:text-white transition-colors cursor-pointer"
                 title="Copy WhatsApp Number"
               >
-                {copiedPhone ? <Check className="w-3.5 h-3.5 text-[#25D366]" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedPhone ? <Check className="w-4 h-4 text-[#25D366]" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
 
@@ -192,10 +193,11 @@ export default function Footer({
               </a>
               <button
                 onClick={() => copyToClipboard(emailAddress, 'email')}
-                className="p-1 hover:text-white transition-colors cursor-pointer"
+                aria-label="Copy Email Address"
+                className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2 hover:text-white transition-colors cursor-pointer"
                 title="Copy Email Address"
               >
-                {copiedEmail ? <Check className="w-3.5 h-3.5 text-[#d4af37]" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedEmail ? <Check className="w-4 h-4 text-[#d4af37]" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           </div>

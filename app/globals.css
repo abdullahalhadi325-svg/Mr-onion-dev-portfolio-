@@ -83,4 +83,5 @@ body {
 
 .animate-hypnotic-pulse {
   animation: hypnoticPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
 }

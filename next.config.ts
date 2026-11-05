@@ -29,6 +29,13 @@ const nextConfig: NextConfig = {
         ignored: /.*/,
       };
     }
+
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      'lightningcss': false,
+      '../lightningcss.android-arm64.node': false,
+    };
+
     return config;
   },
 };

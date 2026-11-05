@@ -1,8 +1,8 @@
 'use client';
 
-/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, Suspense, useSyncExternalStore } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
   Eye,
   EyeOff,
@@ -619,9 +619,9 @@ function AdminContent() {
           <button
             onClick={handleLogout}
             aria-label="Logout"
-            className="p-2 rounded-sm border border-white/15 text-neutral-400 hover:text-white hover:border-white transition-colors cursor-pointer ml-1"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2 rounded-sm border border-white/15 text-neutral-400 hover:text-white hover:border-white transition-colors cursor-pointer ml-1"
           >
-            <LogOut className="w-3.5 h-3.5" />
+            <LogOut className="w-4 h-4" />
           </button>
         </div>
       </header>
@@ -714,10 +714,12 @@ function AdminContent() {
                   {/* Media Preview */}
                   <div className="w-full aspect-[3/4] bg-neutral-900 border border-white/10 rounded-sm overflow-hidden relative flex items-center justify-center">
                     {currentContent.hero.image ? (
-                      <img
+                      <Image
                         src={currentContent.hero.image}
                         alt="Hero Preview"
-                        className="w-full h-full object-cover object-top"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-top"
                       />
                     ) : (
                       <span className="text-xs text-neutral-600 font-mono">No Image</span>
@@ -1109,7 +1111,8 @@ function AdminContent() {
                       </div>
                       <button
                         onClick={() => deleteProject(pIdx)}
-                        className="p-1.5 rounded-sm text-neutral-400 hover:text-red-400 hover:bg-red-950/20 transition-colors cursor-pointer"
+                        aria-label="Delete this project"
+                        className="flex items-center justify-center min-w-[44px] min-h-[44px] p-1.5 rounded-sm text-neutral-400 hover:text-red-400 hover:bg-red-950/20 transition-colors cursor-pointer"
                         title="Delete this project"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -1124,10 +1127,12 @@ function AdminContent() {
                       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
                         <div className="w-full aspect-video bg-neutral-900 border border-white/10 rounded-sm overflow-hidden flex items-center justify-center relative">
                           {proj.image ? (
-                            <img
+                            <Image
                               src={proj.image}
                               alt={proj.title}
-                              className="w-full h-full object-cover"
+                              fill
+                              sizes="(max-width: 768px) 100vw, 25vw"
+                              className="object-cover"
                             />
                           ) : (
                             <span className="text-xs text-neutral-600 font-mono">No Image</span>

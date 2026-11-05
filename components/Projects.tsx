@@ -1,9 +1,9 @@
 'use client';
 
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 import { X, ExternalLink, Play, Image as ImageIcon } from 'lucide-react';
 import { ProjectItem, siteData, LocaleContent } from '@/lib/siteData';
 
@@ -67,54 +67,80 @@ export default function Projects({
       }
 
       // 2. Parallax effect on project images tied strictly to scroll with scrub: 1
-      const projectItems = containerRef.current?.querySelectorAll<HTMLElement>('.project-item');
-      projectItems?.forEach((item) => {
-        const img = item.querySelector<HTMLElement>('.parallax-image');
-        const content = item.querySelector<HTMLElement>('.project-content');
+      let mm = gsap.matchMedia();
+      mm.add("(min-width: 768px)", () => {
+        const projectItems = containerRef.current?.querySelectorAll<HTMLElement>('.project-item');
+        projectItems?.forEach((item) => {
+          const img = item.querySelector<HTMLElement>('.parallax-image');
+          const content = item.querySelector<HTMLElement>('.project-content');
 
-        if (img) {
-          gsap.fromTo(
-            img,
-            { yPercent: -12, scale: 1.12 },
-            {
-              yPercent: 12,
-              scale: 1.0,
-              ease: 'none',
-              force3D: true,
-              scrollTrigger: {
-                trigger: item,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: 1,
-              },
-            }
-          );
-        }
+          if (img) {
+            gsap.fromTo(
+              img,
+              { yPercent: -12, scale: 1.12 },
+              {
+                yPercent: 12,
+                scale: 1.0,
+                ease: 'none',
+                force3D: true,
+                scrollTrigger: {
+                  trigger: item,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: 1,
+                },
+              }
+            );
+          }
 
-        if (content) {
-          gsap.fromTo(
-            content,
-            { opacity: 0, y: 40 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1.2,
-              ease: 'power3.out',
-              force3D: true,
-              scrollTrigger: {
-                trigger: content,
-                start: 'top 85%',
-                toggleActions: 'play none none none',
-              },
-            }
-          );
-        }
+          if (content) {
+            gsap.fromTo(
+              content,
+              { opacity: 0, y: 40 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                force3D: true,
+                scrollTrigger: {
+                  trigger: content,
+                  start: 'top 85%',
+                  toggleActions: 'play none none none',
+                },
+              }
+            );
+          }
+        });
       });
+      mm.add("(max-width: 767px)", () => {
+        const projectItems = containerRef.current?.querySelectorAll<HTMLElement>('.project-item');
+        projectItems?.forEach((item) => {
+          const content = item.querySelector<HTMLElement>('.project-content');
+          if (content) {
+            gsap.fromTo(
+              content,
+              { opacity: 0, y: 40 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                force3D: true,
+                scrollTrigger: {
+                  trigger: content,
+                  start: 'top 85%',
+                  toggleActions: 'play none none none',
+                },
+              }
+            );
+          }
+        });
+      });
+      return () => mm.revert();
     }, containerRef);
 
-    return () => {
-      ctx.revert();
-    };
+    return () => { ctx.revert(); };
   }, [lang, projects]);
 
   const toggleMedia = (id: string, currentIsVideo: boolean) => {
@@ -198,11 +224,13 @@ export default function Projects({
                     </div>
                   ) : (
                     <>
-                      <img
-                        src={project.image}
+                      <Image
+                        src={project.image || '/project1.jpg'}
                         alt={project.title}
-                        className="parallax-image w-full h-[125%] object-cover object-center absolute inset-0 -top-[12%] will-change-transform"
-                        style={{ willChange: 'transform' }}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 100vw"
+                        className="parallax-image object-cover object-center will-change-transform"
+                        style={{ willChange: 'transform', height: '125%', top: '-12%' }}
                         onError={(e) => {
                           const target = e.currentTarget;
                           if (!target.src.endsWith('.svg')) {

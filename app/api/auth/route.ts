@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'crypto';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -7,11 +8,14 @@ export async function POST(req: NextRequest) {
   try {
     const { username, password, secret } = await req.json();
 
+    const envUsername = process.env.ADMIN_USERNAME || 'hadi@hadi111';
+    const envPassword = process.env.ADMIN_PASSWORD || 'hadi@2026';
+
     // Accepted usernames
-    const validUsernames = ['hadi@hadi111', 'hadi', 'abdullah'];
+    const validUsernames = [envUsername.toLowerCase()];
     
-    // Accepted passwords: user defined or default 'hadi@2026', 'hadi111', 'hadi@hadi111'
-    const validPasswords = ['hadi111', 'hadi@2026', 'hadi@hadi111', 'admin', 'admin123'];
+    // Accepted passwords
+    const validPasswords = [envPassword];
 
     const isUserValid = validUsernames.includes(username?.trim().toLowerCase());
     const isPasswordValid = validPasswords.includes(password?.trim());
@@ -23,15 +27,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Generate lightweight mock JWT/session token
-    const token = `hadi_auth_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+    // Generate secure session token
+    const randomBytes = crypto.randomBytes(16).toString('hex');
+    const token = `hadi_auth_${Date.now()}_${randomBytes}`;
 
     return NextResponse.json({
       success: true,
       message: 'Authentication successful.',
       token,
       user: {
-        username: 'hadi@hadi111',
+        username: envUsername,
         name: 'Abdullah Al Hadi',
         role: 'Administrator',
       },

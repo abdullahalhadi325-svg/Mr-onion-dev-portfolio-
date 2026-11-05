@@ -1,9 +1,9 @@
 'use client';
 
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -168,11 +168,14 @@ export default function Page() {
         The image stays completely fixed at z-0 while the text and all subsequent black sections scroll OVER it.
       */}
       <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none overflow-hidden">
-        <img
+        <Image
           ref={heroImageRef}
           src={currentData.hero.image || '/hero.png'}
           alt={currentData.hero.name}
-          className="w-full h-full object-cover object-top will-change-transform"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-top will-change-transform"
           style={{ willChange: 'transform, opacity' }}
         />
         {/* Adjusted Gradient Mask: Face and upper body remain crisp and brightly visible */}

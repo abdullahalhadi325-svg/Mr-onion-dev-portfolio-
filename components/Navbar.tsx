@@ -96,12 +96,12 @@ export default function Navbar({ lang = 'en', onToggleLang, data }: NavbarProps)
           <button
             onClick={toggleMenu}
             aria-label={isOpen ? content.labels.close : content.labels.menu}
-            className="flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/15 bg-white/5 hover:border-white/40 text-xs text-neutral-200 hover:text-white transition-all cursor-pointer active:scale-95 shadow-sm"
+            className="flex items-center justify-center gap-2 min-w-[44px] min-h-[44px] px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:border-white/40 text-xs text-neutral-200 hover:text-white transition-all cursor-pointer active:scale-95 shadow-sm"
           >
             <span className={lang === 'bn' ? "font-['Hind_Siliguri']" : 'font-sans'}>
               {isOpen ? content.labels.close : content.labels.menu}
             </span>
-            {isOpen ? <X className="w-3.5 h-3.5" /> : <Menu className="w-3.5 h-3.5" />}
+            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </header>
@@ -120,10 +120,11 @@ export default function Navbar({ lang = 'en', onToggleLang, data }: NavbarProps)
             </span>
             <button
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 text-xs text-neutral-200 hover:text-white hover:border-white/50 transition-all cursor-pointer"
+              aria-label={content.labels.close}
+              className="flex items-center justify-center min-w-[44px] min-h-[44px] gap-2 px-4 py-2 rounded-full border border-white/20 text-xs text-neutral-200 hover:text-white hover:border-white/50 transition-all cursor-pointer"
             >
               <span>{content.labels.close}</span>
-              <X className="w-3.5 h-3.5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 

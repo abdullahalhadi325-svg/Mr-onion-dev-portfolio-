@@ -79,7 +79,7 @@ export async function getSiteContent(): Promise<SiteContentSchema> {
     await fs.mkdir(DATA_DIR, { recursive: true });
     await fs.writeFile(DATA_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
   } catch (error) {
-    console.warn('Failed to persist initial site-content.json:', error);
+    console.warn('Failed to persist initial site-content.json, running in serverless environment or readonly filesystem:', error);
   }
 
   memoryCache = initialData;
@@ -93,8 +93,6 @@ export async function saveSiteContent(
   updatedContent: { en: LocaleContent; bn: LocaleContent },
   secretKey?: string
 ): Promise<SiteContentSchema> {
-  await fs.mkdir(DATA_DIR, { recursive: true });
-
   const current = await getSiteContent();
   const newSchema: SiteContentSchema = {
     en: updatedContent.en,
@@ -106,7 +104,13 @@ export async function saveSiteContent(
     },
   };
 
-  await fs.writeFile(DATA_FILE, JSON.stringify(newSchema, null, 2), 'utf-8');
+  try {
+    await fs.mkdir(DATA_DIR, { recursive: true });
+    await fs.writeFile(DATA_FILE, JSON.stringify(newSchema, null, 2), 'utf-8');
+  } catch (error) {
+    console.warn('Failed to write site-content.json. Updating in-memory cache only (Serverless Mode).', error);
+  }
+
   memoryCache = newSchema;
   return newSchema;
 }
@@ -125,8 +129,13 @@ export async function resetSiteContent(): Promise<SiteContentSchema> {
     },
   };
 
-  await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(DATA_FILE, JSON.stringify(defaultData, null, 2), 'utf-8');
+  try {
+    await fs.mkdir(DATA_DIR, { recursive: true });
+    await fs.writeFile(DATA_FILE, JSON.stringify(defaultData, null, 2), 'utf-8');
+  } catch (error) {
+    console.warn('Failed to reset site-content.json. Resetting in-memory cache only (Serverless Mode).', error);
+  }
+
   memoryCache = defaultData;
   return defaultData;
 }
