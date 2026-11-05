@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Hind+Siliguri:wght@300;400;600;700&family=Tiro+Bangla:ital@0;1&display=swap');
+
+@theme {
+  --font-sans: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', 'Tiro Bangla', Georgia, serif;
+}
+
+html {
+  background-color: #000;
+  color: #fff;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+  font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+}
+
+.font-sans {
+  font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', 'Tiro Bangla', Georgia, serif;
+}
+
+/* Explicit language-based typography overrides */
+[lang="bn"] .font-serif,
+.font-bn-serif {
+  font-family: 'Tiro Bangla', Georgia, serif !important;
+}
+
+[lang="bn"] .font-sans,
+.font-bn-sans {
+  font-family: 'Hind Siliguri', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Minimalist dark scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Subtle glow pulse keyframes */
+@keyframes hypnoticPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.animate-hypnotic-pulse {
+  animation: hypnoticPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}

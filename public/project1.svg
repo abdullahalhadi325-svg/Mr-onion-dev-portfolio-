@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="50%" stop-color="#0a0a0c"/>
+      <stop offset="100%" stop-color="#121216"/>
+    </linearGradient>
+    <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#d4af37" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bg1)"/>
+  
+  <!-- Subtle architectural grid -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="160" y1="0" x2="160" y2="900"/>
+    <line x1="480" y1="0" x2="480" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1120" y1="0" x2="1120" y2="900"/>
+    <line x1="1440" y1="0" x2="1440" y2="900"/>
+    <line x1="0" y1="180" x2="1600" y2="180"/>
+    <line x1="0" y1="360" x2="1600" y2="360"/>
+    <line x1="0" y1="540" x2="1600" y2="540"/>
+    <line x1="0" y1="720" x2="1600" y2="720"/>
+  </g>
+
+  <!-- Main Video Frame Mockup -->
+  <g transform="translate(180, 140)">
+    <!-- Window Frame -->
+    <rect width="1240" height="620" rx="4" fill="#000000" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+    
+    <!-- Header bar -->
+    <rect width="1240" height="50" fill="#0a0a0a" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    <circle cx="30" cy="25" r="5" fill="#262626"/>
+    <circle cx="50" cy="25" r="5" fill="#262626"/>
+    <circle cx="70" cy="25" r="5" fill="#262626"/>
+    
+    <text x="120" y="30" fill="#737373" font-family="monospace" font-size="12" letter-spacing="2">HEYTUBE // EDGE CLOUD VIDEO ENGINE</text>
+    <text x="1150" y="30" fill="#d4af37" font-family="monospace" font-size="12" letter-spacing="1">4K HDR • 60 FPS</text>
+
+    <!-- Center Player Viewport -->
+    <rect x="60" y="90" width="1120" height="420" fill="url(#glow)" stroke="#ffffff" stroke-opacity="0.08"/>
+    
+    <!-- Central Play / Frame Symbol -->
+    <circle cx="620" cy="290" r="48" fill="#000000" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1.5"/>
+    <polygon points="612,274 612,306 638,290" fill="#ffffff" opacity="0.9"/>
+
+    <!-- Waveform / Spectrum below center -->
+    <path d="M 120 450 Q 220 400 320 450 T 520 430 T 720 410 T 920 440 T 1120 430" fill="none" stroke="url(#streamGrad)" stroke-width="2"/>
+
+    <!-- Scrub Bar -->
+    <rect x="60" y="540" width="1120" height="4" rx="2" fill="#262626"/>
+    <rect x="60" y="540" width="740" height="4" rx="2" fill="url(#streamGrad)"/>
+    <circle cx="800" cy="542" r="6" fill="#ffffff"/>
+
+    <!-- Telemetry labels -->
+    <text x="60" y="575" fill="#a3a3a3" font-family="monospace" font-size="11">LATENCY: 8.4MS</text>
+    <text x="240" y="575" fill="#a3a3a3" font-family="monospace" font-size="11">PROTOCOL: HLS/WEBRTC</text>
+    <text x="460" y="575" fill="#a3a3a3" font-family="monospace" font-size="11">EDGE NODES: 42 POPs</text>
+    <text x="1100" y="575" fill="#ffffff" font-family="monospace" font-size="11" text-anchor="end">01:42:19 / 02:15:00</text>
+  </g>
+</svg>

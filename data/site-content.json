@@ -1,0 +1,507 @@
+{
+  "en": {
+    "meta": {
+      "title": "Abdullah Al Hadi — Web & App Developer · System Architect",
+      "description": "Portfolio of Abdullah Al Hadi — Web & App Developer, System Architect, Vibe Coder & Ethical Hacker.",
+      "url": "https://abdullahalhadi.com"
+    },
+    "hero": {
+      "name": "Abdullah Al Hadi",
+      "role": "WEB & APP DEVELOPER · SYSTEM ARCHITECT",
+      "eyebrow": "Full-Stack Architecture & High-Concurrency Systems",
+      "headlinePrimary": "Abdullah",
+      "headlineSecondary": "Al Hadi",
+      "subheadline": "I architect resilient full-stack systems, engineer scalable digital products, and code with AI.",
+      "image": "/hero.png",
+      "ctaPrimary": {
+        "label": "Explore Selected Work",
+        "targetId": "work-section"
+      },
+      "ctaSecondary": {
+        "label": "Start a Conversation",
+        "url": "https://wa.me/8801934885834"
+      }
+    },
+    "about": {
+      "eyebrow": "01 / ARCHITECTURAL IDENTITY",
+      "headlinePrimary": "Engineering beyond conventional code.",
+      "headlineSecondary": "Systems built for real human impact.",
+      "bio": "At 17, I operate as an Elite Full-Stack System Architect, Web & App Developer, and the founder of Future Builders. With deep mastery in cutting-edge frontend and backend architectures, AI-augmented engineering, and cybersecurity threat mitigation, I build digital engines that thrive under extreme scale.",
+      "stats": [
+        {
+          "value": "50+",
+          "label": "PROJECTS COMPLETED"
+        },
+        {
+          "value": "17",
+          "label": "YRS OLD / SYSTEM ARCHITECT"
+        },
+        {
+          "value": "2.5x",
+          "label": "GROWTH ACCELERATED"
+        }
+      ],
+      "quote": "I am a Vibe Coder. I code with AI. I am not a traditional coder, I am a System Architect.",
+      "quoteAuthor": "Abdullah Al Hadi",
+      "skills": [
+        "JavaScript",
+        "TypeScript",
+        "Tailwind CSS",
+        "React",
+        "Next.js",
+        "Game App Development"
+      ],
+      "systemsBuilt": [
+        "Blog & Editorial Platforms",
+        "Education & LMS Portals",
+        "Business Management Systems",
+        "Cafe & Restaurant POS",
+        "Online Business Engines",
+        "Full-Scale E-Commerce Stores",
+        "Enterprise ERP Infrastructure"
+      ],
+      "cyberSecurity": {
+        "title": "Cyber Security & Ethical Hacking",
+        "subtitle": "White Hat Defense & Black Hat Threat Modeling",
+        "description": "Deep architectural security knowledge spanning penetration testing, network packet inspection, vulnerability mitigation, zero-trust authentication, and offensive security vectors to construct impenetrable production software.",
+        "domains": [
+          "Penetration Testing & Auditing",
+          "Vulnerability Scanning (OWASP Top 10)",
+          "Zero-Trust Auth & RBAC Hardening",
+          "Defensive & Offensive Threat Modeling"
+        ]
+      }
+    },
+    "projects": [
+      {
+        "id": "heytube",
+        "index": "01",
+        "title": "HeyTube",
+        "subtitle": "Edge Video Streaming Infrastructure",
+        "tag": "Edge Architecture · Video Systems",
+        "image": "/project1.jpg",
+        "liveUrl": "https://heytube.demo.site",
+        "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "description": "A distributed edge-native video delivery platform engineered to eliminate latency, provide seamless 4K HDR streaming, and maintain high-fidelity playback across high-concurrency global networks.",
+        "problem": "Traditional centralized video hosting architectures suffer catastrophic latency spikes and buffer stalls when concurrent user loads surge beyond 50,000 requests.",
+        "solution": "Architected an edge-routed HLS/WebRTC streaming engine with smart segment pre-fetching, multi-region failover, and geo-distributed caching deployed across 42 Points of Presence (POPs).",
+        "benefit": "Reduced initial frame load latency by 68% (sub-10ms), achieved 99.99% playback uptime, and handled over 100k concurrent streams with zero frame drops.",
+        "metrics": [
+          {
+            "label": "Time to First Frame",
+            "value": "< 8.4ms"
+          },
+          {
+            "label": "Edge POPs Active",
+            "value": "42"
+          },
+          {
+            "label": "Bandwidth Reduction",
+            "value": "46%"
+          }
+        ],
+        "stack": [
+          "WebRTC",
+          "Go",
+          "Next.js",
+          "HLS Streaming",
+          "Cloudflare Workers",
+          "Redis"
+        ],
+        "link": "https://wa.me/8801934885834"
+      },
+      {
+        "id": "institutional-erp",
+        "index": "02",
+        "title": "Institutional ERP",
+        "subtitle": "High-Availability Multi-Tenant Cloud Operating System",
+        "tag": "Cloud Architecture · Distributed Systems",
+        "image": "/project2.jpg",
+        "liveUrl": "https://erp.futurebuilders.dev",
+        "youtubeUrl": "",
+        "description": "An enterprise-grade institutional operating system powering centralized identity, real-time academic registries, financial audit trails, and multi-campus resource allocation.",
+        "problem": "Legacy institutional software operated on siloed on-premise relational databases, causing frequent data desynchronization, student registration crashes, and days-long financial reconciliation lag.",
+        "solution": "Built a fault-tolerant event-driven microservices architecture utilizing distributed ledger queues, role-based access control (RBAC), and automated read-replica sharding.",
+        "benefit": "Empowered 50,000+ daily active academic users, accelerated peak registration processing by 14.8x, and guaranteed 99.998% mission-critical ledger uptime.",
+        "metrics": [
+          {
+            "label": "Concurrent Users",
+            "value": "50,000+"
+          },
+          {
+            "label": "Transaction Speed",
+            "value": "48,200/s"
+          },
+          {
+            "label": "Audit Compliance",
+            "value": "SOC-2 Type II"
+          }
+        ],
+        "stack": [
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "Kafka",
+          "Docker",
+          "Kubernetes"
+        ],
+        "link": "https://wa.me/8801934885834"
+      },
+      {
+        "id": "telegram-ai-bot",
+        "index": "03",
+        "title": "Telegram AI Bot",
+        "subtitle": "Autonomous Agentic Operations & Deployment Dispatch",
+        "tag": "Agentic Systems · LLM Tooling",
+        "image": "/project3.jpg",
+        "liveUrl": "https://t.me/DevOpsDispatchBot",
+        "youtubeUrl": "",
+        "description": "An autonomous developer agent orchestrating continuous integration, security vulnerability audits, and Kubernetes cluster deployments directly from secure chat interfaces.",
+        "problem": "Engineering leadership spent an average of 45 minutes per deployment manually checking syntax regressions, pulling server logs, and approving staging rollouts.",
+        "solution": "Engineered an agentic DAG pipeline combining structured LLM reasoning, sandboxed Git analysis, and bi-directional webhooks with granular permission gating.",
+        "benefit": "Reduced median CI deployment turnaround time from 45 minutes to 90 seconds, executed over 12,000 safe automated operations, and completely eliminated manual configuration errors.",
+        "metrics": [
+          {
+            "label": "Median Turnaround",
+            "value": "90 sec"
+          },
+          {
+            "label": "Agent Accuracy",
+            "value": "99.4%"
+          },
+          {
+            "label": "Automated Operations",
+            "value": "12,000+"
+          }
+        ],
+        "stack": [
+          "Gemini API",
+          "TypeScript",
+          "Telegram MTProto",
+          "Python",
+          "FastAPI",
+          "Docker"
+        ],
+        "link": "https://wa.me/8801934885834"
+      }
+    ],
+    "experience": [
+      {
+        "year": "2021",
+        "title": "Coding Foundations & Security Exploration",
+        "description": "Deep dive into full-stack web and app engineering, penetration testing vectors, and foundational systems architecture."
+      },
+      {
+        "year": "2024",
+        "title": "Scaled Systems & Cloud Deployments",
+        "description": "Architecting high-concurrency multi-tenant platforms, containerized microservices, and high-performance game apps."
+      },
+      {
+        "year": "Today",
+        "title": "Founder & Full-Stack System Architect",
+        "description": "Founder of Future Builders. Designing next-generation AI-powered products, defensive security architectures, and autonomous platforms."
+      }
+    ],
+    "socialLinks": {
+      "whatsapp": "https://wa.me/8801934885834",
+      "whatsappDisplay": "+880 1934-885834",
+      "email": "mailto:abdullahalhadi325@gmail.com",
+      "github": "https://github.com/abdullahalhadi",
+      "linkedin": "https://linkedin.com/in/abdullahalhadi",
+      "instagram": "https://instagram.com/abdullahalhadi",
+      "facebook": "https://facebook.com/abdullahalhadi",
+      "tiktok": "https://tiktok.com/@abdullahalhadi"
+    },
+    "footer": {
+      "eyebrow": "03 / DIRECT COLLABORATION",
+      "headlinePrimary": "Let's architect something",
+      "headlineSecondary": "great.",
+      "subtext": "Available for full-stack system architecture, high-scale web & mobile app engineering, developer education, security audits, and founder-led initiatives.",
+      "contactPrompt": "Start a Conversation",
+      "location": "Dhaka, Bangladesh · Worldwide",
+      "copyrightYear": 2026
+    },
+    "labels": {
+      "menu": "Menu",
+      "close": "Close",
+      "work": "Work",
+      "about": "About",
+      "experience": "Experience",
+      "contact": "Contact",
+      "exploreStory": "Explore the story",
+      "backToWorks": "Back to Selected Works",
+      "viewLiveSite": "View Live Site ↗",
+      "watchVideo": "Watch Demo Reel ↗",
+      "discussWhatsApp": "Discuss this architecture on WhatsApp ↗",
+      "verifiedMetrics": "Verified Engineering Metrics",
+      "productionStack": "Production Stack",
+      "problem": "PROBLEM",
+      "solution": "SOLUTION",
+      "benefit": "BENEFIT",
+      "motionOn": "MOTION ON",
+      "motionPaused": "MOTION PAUSED",
+      "liveEffects": "Enable live effects",
+      "liveEffectsActive": "Live effects enabled",
+      "connectChannels": "Connect Across Channels",
+      "sendEmail": "Send Email",
+      "skillsTitle": "Core Engineering Stack",
+      "systemsTitle": "Production Systems Engineered",
+      "cyberTitle": "Security & Ethical Hacking"
+    }
+  },
+  "bn": {
+    "meta": {
+      "title": "আব্দুল্লাহ আল হাদী — ওয়েব ও অ্যাপ ডেভেলপার · সিস্টেম আর্কিটেক্ট",
+      "description": "আব্দুল্লাহ আল হাদীর এডিটোরিয়াল পোর্টফোলিও — ফুল-স্ট্যাক সিস্টেম আর্কিটেকচার, ভাইব কোডিং ও সাইবার সিকিউরিটি।",
+      "url": "https://abdullahalhadi.com"
+    },
+    "hero": {
+      "name": "আব্দুল্লাহ আল হাদী",
+      "role": "ওয়েব ও অ্যাপ ডেভেলপার · সিস্টেম আর্কিটেক্ট",
+      "eyebrow": "ফুল-স্ট্যাক আর্কিটেকচার ও হাই-কনকারেন্সি সিস্টেমস",
+      "headlinePrimary": "আব্দুল্লাহ",
+      "headlineSecondary": "আল হাদী",
+      "subheadline": "আমি রেসিলিয়েন্ট ফুল-স্ট্যাক সিস্টেম আর্কিটেক্ট করি, ডিজিটাল প্রোডাক্ট বানাই এবং এআই দিয়ে কোড করি।",
+      "image": "/hero.png",
+      "ctaPrimary": {
+        "label": "নির্বাচিত কাজ দেখুন",
+        "targetId": "work-section"
+      },
+      "ctaSecondary": {
+        "label": "সরাসরি কথা বলুন",
+        "url": "https://wa.me/8801934885834"
+      }
+    },
+    "about": {
+      "eyebrow": "০১ / আর্কিটেকচারাল পরিচিতি",
+      "headlinePrimary": "প্রথাগত কোডিংয়ের চেয়ে অনেক দূর।",
+      "headlineSecondary": "বাস্তব মানুষের ক্ষমতায়নে নির্মিত সিস্টেম।",
+      "bio": "১৭ বছর বয়সে আমি কাজ করছি এলিট ফুল-স্ট্যাক সিস্টেম আর্কিটেক্ট, ওয়েব ও অ্যাপ ডেভেলপার এবং ফিউচার বিল্ডার্স-এর প্রতিষ্ঠাতা হিসেবে। গভীর ফ্রন্টএন্ড-ব্যাকএন্ড দক্ষতা, এআই-নির্ভর কোডিং কৌশল এবং সাইবার সিকিউরিটি থ্রেট প্রতিরোধে আমি তৈরি করি চরম স্কেলে টেকসই ডিজিটাল ইঞ্জিন।",
+      "stats": [
+        {
+          "value": "৫০+",
+          "label": "সম্পন্ন প্রজেক্ট"
+        },
+        {
+          "value": "১৭",
+          "label": "বছর বয়স / সিস্টেম আর্কিটেক্ট"
+        },
+        {
+          "value": "২.৫×",
+          "label": "প্রবৃদ্ধি ত্বরান্বিত"
+        }
+      ],
+      "quote": "আমি একজন ভাইব কোডার। আমি এআই দিয়ে কোড করি। আমি গতানুগতিক কোডার নই, আমি একজন সিস্টেম আর্কিটেক্ট।",
+      "quoteAuthor": "আব্দুল্লাহ আল হাদী",
+      "skills": [
+        "JavaScript",
+        "TypeScript",
+        "Tailwind CSS",
+        "React",
+        "Next.js",
+        "Game App Development"
+      ],
+      "systemsBuilt": [
+        "ব্লগ ও এডিটোরিয়াল প্ল্যাটফর্ম",
+        "শিক্ষা ও এলএমএস পোর্টাল",
+        "ব্যবসা ব্যবস্থাপনা সিস্টেম",
+        "ক্যাফে ও রেস্তোরাঁ পিওএস",
+        "অনলাইন বিজনেস ইঞ্জিন",
+        "পূর্ণাঙ্গ ই-কমার্স স্টোরফ্রন্ট",
+        "এন্টারপ্রাইজ ইআরপি আর্কিটেকচার"
+      ],
+      "cyberSecurity": {
+        "title": "সাইবার সিকিউরিটি ও এথিক্যাল হ্যাকিং",
+        "subtitle": "হোয়াইট হ্যাট ডিফেন্স ও ব্ল্যাক হ্যাট থ্রেট মডেলিং",
+        "description": "পেনেট্রেশন টেস্টিং, নেটওয়ার্ক ট্র্যাফিক অ্যানালাইসিস, ওডব্লিউএএসপি সিকিউরিটি অডিট, জিরো-ট্রাস্ট অথেন্টিকেশন এবং আক্রমণাত্মক ভেক্টর প্রতিরোধে গভীর নিরাপত্তা পরিকাঠামো।",
+        "domains": [
+          "পেনেট্রেশন টেস্টিং ও কোড অডিট",
+          "ভালনারেবিলিটি স্ক্যানিং (OWASP Top 10)",
+          "জিরো-ট্রাস্ট অথেন্টিকেশন ও আরব্যাক",
+          "ডিফেন্সিভ ও অফেন্সিভ সিকিউরিটি আর্কিটেকচার"
+        ]
+      }
+    },
+    "projects": [
+      {
+        "id": "heytube",
+        "index": "০১",
+        "title": "HeyTube",
+        "subtitle": "এজ ভিডিও স্ট্রিমিং আর্কিটেকচার",
+        "tag": "এজ আর্কিটেকচার · ভিডিও সিস্টেমস",
+        "image": "/project1.jpg",
+        "liveUrl": "https://heytube.demo.site",
+        "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "description": "একটি ডিস্ট্রিবিউটেড এজ-নেটিভ ভিডিও ডেলিভারি প্ল্যাটফর্ম যা গ্লোবাল নেটওয়ার্কে সাব-১০মিলিসেকেন্ড প্লেব্যাক এবং ক্রিস্টাল ক্লিয়ার 4K HDR স্ট্রিমিং নিশ্চিত করে।",
+        "problem": "ঐতিহ্যবাহী সেন্ট্রালাইজড ভিডিও সার্ভারগুলোতে ৫০,০০০+ কনকারেন্ট রিকোয়েস্টে মারাত্মক বাফারিং ও সার্ভার ল্যাটেন্সি তৈরি হয়।",
+        "solution": "৪২টি গ্লোবাল পয়েন্ট অফ প্রেজেন্স (POPs)-এ HLS/WebRTC স্ট্রিমিং ইঞ্জিন, স্মার্ট সেগমেন্ট প্রি-ফেচিং এবং জিও-ডিস্ট্রিবিউটেড ক্যাশিং আর্কিটেকচার তৈরি করেছি।",
+        "benefit": "ফার্স্ট-ফ্রেম ল্যাটেন্সি ৬৮% হ্রাস পেয়ে সাব-১০ms এ নেমে এসেছে এবং শূন্য ফ্রেম ড্রপে ১,০০,০০০+ কনকারেন্ট স্ট্রিম সফলভাবে পরিচালিত হয়েছে।",
+        "metrics": [
+          {
+            "label": "প্রথম ফ্রেম লোড টাইম",
+            "value": "< ৮.৪ms"
+          },
+          {
+            "label": "সক্রিয় এজ POPs",
+            "value": "৪২"
+          },
+          {
+            "label": "ব্যান্ডউইথ সাশ্রয়",
+            "value": "৪৬%"
+          }
+        ],
+        "stack": [
+          "WebRTC",
+          "Go",
+          "Next.js",
+          "HLS Streaming",
+          "Cloudflare Workers",
+          "Redis"
+        ],
+        "link": "https://wa.me/8801934885834"
+      },
+      {
+        "id": "institutional-erp",
+        "index": "০২",
+        "title": "Institutional ERP",
+        "subtitle": "হাই-অ্যাভেইলেবিলিটি মাল্টি-টেন্যান্ট ক্লাউড অপারেটিং সিস্টেম",
+        "tag": "ক্লাউড আর্কিটেকচার · ডিস্ট্রিবিউটেড সিস্টেমস",
+        "image": "/project2.jpg",
+        "liveUrl": "https://erp.futurebuilders.dev",
+        "youtubeUrl": "",
+        "description": "এন্টারপ্রাইজ-গ্রেড সেন্ট্রালাইজড অ্যাকাডেমিক ও ফিনান্সিয়াল ক্লাউড অপারেটিং সিস্টেম যা ৫০,০০০+ দৈনিক সক্রিয় শিক্ষার্থী ও শিক্ষকদের নিখুঁত সেবা দেয়।",
+        "problem": "সিলোড অন-প্রিমাইস ডেটাবেজের কারণে ছাত্র নিবন্ধন ক্র্যাশ, ডেটা অসমলয় এবং দিনব্যাপী অডিট বিলম্বের সংকট দেখা দিত।",
+        "solution": "ফল্ট-টলারেন্ট ইভেন্ট-ড্রিভেন মাইক্রোসার্ভিসেস, ডিসট্রিবিউটেড লেজার কিউ এবং অটোমেটেড রিড-রেপ্লিকা শার্ডিং আর্কিটেকচার প্রস্তুত করা হয়েছে।",
+        "benefit": "৫০,০০০+ দৈনিক শিক্ষার্থীর জন্য পিক নিবন্ধন গতি ১৪.৮ গুণ বৃদ্ধি পেয়েছে এবং ৯৯.৯৯৮% মিশন-ক্রিটিক্যাল আপটাইম নিশ্চিত হয়েছে।",
+        "metrics": [
+          {
+            "label": "দৈনিক সক্রিয় ব্যবহারকারী",
+            "value": "৫০,০০০+"
+          },
+          {
+            "label": "লেনদেন গতি",
+            "value": "৪৮,২০০/সে"
+          },
+          {
+            "label": "সিকিউরিটি কমপ্লায়েন্স",
+            "value": "SOC-2 Type II"
+          }
+        ],
+        "stack": [
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "Kafka",
+          "Docker",
+          "Kubernetes"
+        ],
+        "link": "https://wa.me/8801934885834"
+      },
+      {
+        "id": "telegram-ai-bot",
+        "index": "০৩",
+        "title": "Telegram AI Bot",
+        "subtitle": "স্বয়ংক্রিয় এজেনটিক অপারেশনস ও ডিপ্লয়মেন্ট ডিসপ্যাচ",
+        "tag": "এজেনটিক সিস্টেমস · এলএলএম টুলিং",
+        "image": "/project3.jpg",
+        "liveUrl": "https://t.me/DevOpsDispatchBot",
+        "youtubeUrl": "",
+        "description": "একটি স্বায়ত্তশাসিত ডেভেলপার এজেন্ট যা নিরাপদ টেলিগ্রাম চ্যাট ইন্টারফেস থেকেই গিট রেপো বিশ্লেষণ, সিকিউরিটি অডিট এবং কুবারনেটিস ডিপ্লয়মেন্ট পরিচালনা করে।",
+        "problem": "ম্যানুয়ালি সিনট্যাক্স রিগ্রেশন পরীক্ষা, সার্ভার লগ যাচাই এবং স্টেজিং ডিপ্লয়মেন্ট অনুমোদন করতে ইঞ্জিনিয়ারদের গড়ে ৪৫ মিনিট নষ্ট হতো।",
+        "solution": "এলএলএম রিজনিং, স্যান্ডবক্সড অ্যাস্ট কোড অ্যানালাইসিস এবং দ্বি-মুখী ক্লাউড ওয়েব-হুক সম্বলিত একটি নির্ভরযোগ্য এজেনটিক ড্যাগ পাইপলাইন তৈরি করা হয়েছে।",
+        "benefit": "সিআই ডিপ্লয়মেন্ট টার্নঅ্যারাউন্ড ৪৫ মিনিট থেকে কমে মাত্র ৯০ সেকেন্ডে নেমে এসেছে এবং ১২,০০০+ নিরাপদ স্বয়ংক্রিয় অপারেশন সম্পন্ন হয়েছে।",
+        "metrics": [
+          {
+            "label": "গড় টার্নঅ্যারাউন্ড সময়",
+            "value": "৯০ সেকেন্ড"
+          },
+          {
+            "label": "এজেন্ট নির্ভুলতা",
+            "value": "৯৯.৪%"
+          },
+          {
+            "label": "স্বয়ংক্রিয় অপারেশন",
+            "value": "১২,০০০+"
+          }
+        ],
+        "stack": [
+          "Gemini API",
+          "TypeScript",
+          "Telegram MTProto",
+          "Python",
+          "FastAPI",
+          "Docker"
+        ],
+        "link": "https://wa.me/8801934885834"
+      }
+    ],
+    "experience": [
+      {
+        "year": "২০২১",
+        "title": "কোডিংয়ের সূচনা ও সিকিউরিটি অনুসন্ধান",
+        "description": "ফুল-স্ট্যাক ওয়েব ও মোবাইল সিস্টেম, পেনেট্রেশন টেস্টিং এবং মৌলিক আর্কিটেকচার নিয়ে কাজের যাত্রা।"
+      },
+      {
+        "year": "২০২৪",
+        "title": "স্কেলড সিস্টেম ও ক্লাউড ডেভলপমেন্ট",
+        "description": "হাই-কনকারেন্সি মাল্টি-টেন্যান্ট প্ল্যাটফর্ম, ক্লাউড মাইক্রোসার্ভিসেস ও গেম অ্যাপ তৈরি।"
+      },
+      {
+        "year": "আজ",
+        "title": "ফাউন্ডার ও ফুল-স্ট্যাক সিস্টেম আর্কিটেক্ট",
+        "description": "ফিউচার বিল্ডার্স-এর প্রতিষ্ঠাতা। এজেনটিক এআই আর্কিটেকচার, সাইবার ডিফেন্স ও উচ্চ-গতির ডিজিটাল সমাধান।"
+      }
+    ],
+    "socialLinks": {
+      "whatsapp": "https://wa.me/8801934885834",
+      "whatsappDisplay": "+880 1934-885834",
+      "email": "mailto:abdullahalhadi325@gmail.com",
+      "github": "https://github.com/abdullahalhadi",
+      "linkedin": "https://linkedin.com/in/abdullahalhadi",
+      "instagram": "https://instagram.com/abdullahalhadi",
+      "facebook": "https://facebook.com/abdullahalhadi",
+      "tiktok": "https://tiktok.com/@abdullahalhadi"
+    },
+    "footer": {
+      "eyebrow": "০৩ / সরাসরি যোগাযোগ",
+      "headlinePrimary": "চলুন অসাধারণ কিছু",
+      "headlineSecondary": "আর্কিটেক্ট করি।",
+      "subtext": "ফুল-স্ট্যাক সিস্টেম আর্কিটেকচার, হাই-স্কেল ডিজিটাল প্ল্যাটফর্ম, সিকিউরিটি অডিট কিংবা এডুকেশন পার্টনারশিপে সরাসরি আলোচনা করুন।",
+      "contactPrompt": "সরাসরি কথা বলুন",
+      "location": "ঢাকা, বাংলাদেশ · বিশ্বব্যাপী",
+      "copyrightYear": 2026
+    },
+    "labels": {
+      "menu": "মেনু",
+      "close": "বন্ধ করুন",
+      "work": "কাজ",
+      "about": "পরিচিতি",
+      "experience": "অভিজ্ঞতা",
+      "contact": "যোগাযোগ",
+      "exploreStory": "বিস্তারিত গল্প দেখুন",
+      "backToWorks": "নির্বাচিত কাজে ফিরে যান",
+      "viewLiveSite": "লাইভ সাইট দেখুন ↗",
+      "watchVideo": "ভিডিও ডেমো দেখুন ↗",
+      "discussWhatsApp": "এই আর্কিটেকচার নিয়ে হোয়াটসঅ্যাপে আলোচনা করুন ↗",
+      "verifiedMetrics": "যাচাইকৃত ইঞ্জিনিয়ারিং মেট্রিক্স",
+      "productionStack": "প্রোডাকশন টেক স্ট্যাক",
+      "problem": "সমস্যা (PROBLEM)",
+      "solution": "সমাধান (SOLUTION)",
+      "benefit": "সুবিধা (BENEFIT)",
+      "motionOn": "মোশন চালু",
+      "motionPaused": "মোশন স্থগিত",
+      "liveEffects": "লাইভ ইফেক্ট সক্রিয় করুন",
+      "liveEffectsActive": "লাইভ ইফেক্ট চালু আছে",
+      "connectChannels": "সব মাধ্যমে যুক্ত হোন",
+      "sendEmail": "ইমেইল পাঠান",
+      "skillsTitle": "মূল টেক স্ট্যাক ও স্কিলস",
+      "systemsTitle": "নির্মিত বাস্তব সিস্টেমসমূহ",
+      "cyberTitle": "সাইবার সিকিউরিটি ও এথিক্যাল হ্যাকিং"
+    }
+  },
+  "lastUpdated": "2026-11-04T12:00:00.000Z",
+  "adminConfig": {
+    "username": "hadi@hadi111",
+    "secretKey": "hadi"
+  }
+}
