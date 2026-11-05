@@ -81,6 +81,14 @@ export default function Page() {
         // Fallback to native smooth scrolling
       });
 
+    // Fix for mobile resizing and layout overlapping
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
     return () => {
       if (tickerCallback) {
         gsap.ticker.remove(tickerCallback);
@@ -89,6 +97,8 @@ export default function Page() {
         lenisInstance.destroy();
       }
       lenisRef.current = null;
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
     };
   }, []);
 
