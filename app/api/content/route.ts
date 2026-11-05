@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSiteContent, saveSiteContent, resetSiteContent } from '@/lib/contentStore';
+import { getSiteContent, saveSiteContent, resetSiteContent, undoSiteContent } from '@/lib/contentStore';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -56,6 +56,13 @@ export async function PUT(req: NextRequest) {
         success: true,
         message: 'Content successfully reset to factory defaults.',
         data: reset,
+      });
+    } else if (body.action === 'undo') {
+      const undo = await undoSiteContent();
+      return NextResponse.json({
+        success: true,
+        message: 'Content successfully reverted to previous state.',
+        data: undo,
       });
     }
 

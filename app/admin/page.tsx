@@ -212,6 +212,27 @@ function AdminContent() {
     }
   };
 
+  const handleUndoEdit = async () => {
+    try {
+      const res = await fetch('/api/content', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'undo' }),
+      });
+
+      const json = await res.json();
+      if (res.ok && json.data) {
+        setDataStore({
+          en: json.data.en,
+          bn: json.data.bn,
+        });
+        setToastMessage({ text: 'Reverted to previous state.', type: 'success' });
+      }
+    } catch {
+      setToastMessage({ text: 'Failed to revert state.', type: 'error' });
+    }
+  };
+
   const handleResetToDefault = async () => {
     if (!confirm('Are you sure you want to revert all content to factory architectural defaults?')) {
       return;
@@ -596,6 +617,15 @@ function AdminContent() {
           >
             <span>Live Site</span>
             <ExternalLink className="w-3.5 h-3.5" />
+          </button>
+
+          <button
+            onClick={handleUndoEdit}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-white/15 text-xs font-mono text-neutral-400 hover:text-white hover:border-white transition-colors cursor-pointer"
+            title="Undo last edit"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span className="hidden md:inline">Undo Last Edit</span>
           </button>
 
           <button

@@ -1,5 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
+import { createClient } from '@supabase/supabase-js';
 import { siteData, LocaleContent } from './siteData';
 
 export interface SiteContentSchema {
@@ -12,15 +11,17 @@ export interface SiteContentSchema {
   };
 }
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-const DATA_FILE = path.join(DATA_DIR, 'site-content.json');
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // In-memory cache for fast reads
 let memoryCache: SiteContentSchema | null = null;
 
+const RECORD_ID = 1;
+
 /**
  * Initializes and retrieves the site content.
- * Falls back to hardcoded `siteData` if the JSON file is not yet written.
  */
 export async function getSiteContent(): Promise<SiteContentSchema> {
   if (memoryCache) {
@@ -28,41 +29,48 @@ export async function getSiteContent(): Promise<SiteContentSchema> {
   }
 
   try {
-    const rawData = await fs.readFile(DATA_FILE, 'utf-8');
-    const parsed = JSON.parse(rawData) as SiteContentSchema;
-    if (parsed.en && parsed.bn) {
-      const mergedEn: LocaleContent = {
-        ...siteData.en,
-        ...parsed.en,
-        hero: { ...siteData.en.hero, ...parsed.en.hero },
-        about: { ...siteData.en.about, ...parsed.en.about },
-        labels: { ...siteData.en.labels, ...parsed.en.labels },
-        socialLinks: { ...siteData.en.socialLinks, ...parsed.en.socialLinks },
-        footer: { ...siteData.en.footer, ...parsed.en.footer },
-        projects: parsed.en.projects || siteData.en.projects,
-        experience: parsed.en.experience || siteData.en.experience,
-      };
-      const mergedBn: LocaleContent = {
-        ...siteData.bn,
-        ...parsed.bn,
-        hero: { ...siteData.bn.hero, ...parsed.bn.hero },
-        about: { ...siteData.bn.about, ...parsed.bn.about },
-        labels: { ...siteData.bn.labels, ...parsed.bn.labels },
-        socialLinks: { ...siteData.bn.socialLinks, ...parsed.bn.socialLinks },
-        footer: { ...siteData.bn.footer, ...parsed.bn.footer },
-        projects: parsed.bn.projects || siteData.bn.projects,
-        experience: parsed.bn.experience || siteData.bn.experience,
-      };
-      const mergedSchema: SiteContentSchema = {
-        ...parsed,
-        en: mergedEn,
-        bn: mergedBn,
-      };
-      memoryCache = mergedSchema;
-      return mergedSchema;
+    const { data, error } = await supabase
+      .from('site_content')
+      .select('data')
+      .eq('id', RECORD_ID)
+      .single();
+
+    if (!error && data?.data) {
+      const parsed = data.data as SiteContentSchema;
+      if (parsed.en && parsed.bn) {
+        const mergedEn: LocaleContent = {
+          ...siteData.en,
+          ...parsed.en,
+          hero: { ...siteData.en.hero, ...parsed.en.hero },
+          about: { ...siteData.en.about, ...parsed.en.about },
+          labels: { ...siteData.en.labels, ...parsed.en.labels },
+          socialLinks: { ...siteData.en.socialLinks, ...parsed.en.socialLinks },
+          footer: { ...siteData.en.footer, ...parsed.en.footer },
+          projects: parsed.en.projects || siteData.en.projects,
+          experience: parsed.en.experience || siteData.en.experience,
+        };
+        const mergedBn: LocaleContent = {
+          ...siteData.bn,
+          ...parsed.bn,
+          hero: { ...siteData.bn.hero, ...parsed.bn.hero },
+          about: { ...siteData.bn.about, ...parsed.bn.about },
+          labels: { ...siteData.bn.labels, ...parsed.bn.labels },
+          socialLinks: { ...siteData.bn.socialLinks, ...parsed.bn.socialLinks },
+          footer: { ...siteData.bn.footer, ...parsed.bn.footer },
+          projects: parsed.bn.projects || siteData.bn.projects,
+          experience: parsed.bn.experience || siteData.bn.experience,
+        };
+        const mergedSchema: SiteContentSchema = {
+          ...parsed,
+          en: mergedEn,
+          bn: mergedBn,
+        };
+        memoryCache = mergedSchema;
+        return mergedSchema;
+      }
     }
-  } catch {
-    // File doesn't exist yet or is invalid, seed with siteData
+  } catch (err) {
+    console.error('Error fetching site content from Supabase:', err);
   }
 
   const initialData: SiteContentSchema = {
@@ -76,10 +84,12 @@ export async function getSiteContent(): Promise<SiteContentSchema> {
   };
 
   try {
-    await fs.mkdir(DATA_DIR, { recursive: true });
-    await fs.writeFile(DATA_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+    await supabase.from('site_content').upsert({
+      id: RECORD_ID,
+      data: initialData,
+    });
   } catch (error) {
-    console.warn('Failed to persist initial site-content.json (Vercel read-only filesystem fallback active):', error);
+    console.warn('Failed to persist initial content to Supabase:', error);
   }
 
   memoryCache = initialData;
@@ -87,7 +97,7 @@ export async function getSiteContent(): Promise<SiteContentSchema> {
 }
 
 /**
- * Updates the site content and persists to data/site-content.json
+ * Updates the site content and persists to Supabase.
  */
 export async function saveSiteContent(
   updatedContent: { en: LocaleContent; bn: LocaleContent },
@@ -105,10 +115,13 @@ export async function saveSiteContent(
   };
 
   try {
-    await fs.mkdir(DATA_DIR, { recursive: true });
-    await fs.writeFile(DATA_FILE, JSON.stringify(newSchema, null, 2), 'utf-8');
+    await supabase.from('site_content').upsert({
+      id: RECORD_ID,
+      data: newSchema,
+      previous_data: current,
+    });
   } catch (error) {
-    console.warn('Failed to save site-content.json (Vercel read-only filesystem fallback active):', error);
+    console.warn('Failed to save content to Supabase:', error);
   }
 
   memoryCache = newSchema;
@@ -119,6 +132,7 @@ export async function saveSiteContent(
  * Resets site content back to initial hardcoded defaults in lib/siteData.ts
  */
 export async function resetSiteContent(): Promise<SiteContentSchema> {
+  const current = await getSiteContent();
   const defaultData: SiteContentSchema = {
     en: siteData.en,
     bn: siteData.bn,
@@ -130,12 +144,47 @@ export async function resetSiteContent(): Promise<SiteContentSchema> {
   };
 
   try {
-    await fs.mkdir(DATA_DIR, { recursive: true });
-    await fs.writeFile(DATA_FILE, JSON.stringify(defaultData, null, 2), 'utf-8');
+    await supabase.from('site_content').upsert({
+      id: RECORD_ID,
+      data: defaultData,
+      previous_data: current,
+    });
   } catch (error) {
-    console.warn('Failed to reset site-content.json (Vercel read-only filesystem fallback active):', error);
+    console.warn('Failed to reset content in Supabase:', error);
   }
 
   memoryCache = defaultData;
   return defaultData;
+}
+
+/**
+ * Undo the last edit.
+ */
+export async function undoSiteContent(): Promise<SiteContentSchema> {
+  try {
+    const { data, error } = await supabase
+      .from('site_content')
+      .select('previous_data')
+      .eq('id', RECORD_ID)
+      .single();
+
+    if (!error && data?.previous_data) {
+      const previousData = data.previous_data as SiteContentSchema;
+      const current = await getSiteContent();
+
+      await supabase.from('site_content').upsert({
+        id: RECORD_ID,
+        data: previousData,
+        previous_data: current,
+      });
+
+      memoryCache = previousData;
+      return previousData;
+    }
+  } catch (err) {
+    console.error('Error undoing site content in Supabase:', err);
+  }
+
+  // Fallback if no previous data
+  return getSiteContent();
 }
