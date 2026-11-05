@@ -183,6 +183,21 @@ export default function Projects({
             return (
               <article key={projectId} className="project-item flex flex-col w-full">
                 
+                {/* Project Header: Index, Title & Description (Moved Above Media) */}
+                <div className="max-w-3xl mb-8">
+                  <span className="text-xs font-mono text-[#d4af37] tracking-widest block mb-2">
+                    {project.index}
+                  </span>
+
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif text-white tracking-tight leading-tight">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-neutral-400 max-w-2xl mt-4 text-base md:text-lg leading-relaxed font-sans">
+                    {project.description}
+                  </p>
+                </div>
+
                 {/* Media Container: Either Sleek YouTube Iframe or Parallax Image Container */}
                 <div className="w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[2.35/1] overflow-hidden bg-neutral-950 rounded-sm mb-8 relative border border-white/10 group">
                   
@@ -250,22 +265,10 @@ export default function Projects({
                 {/* Project Content Below Image */}
                 <div className="project-content flex flex-col md:flex-row md:items-start justify-between gap-8 pt-4">
                   
-                  {/* Left: Index, Title & Description */}
-                  <div className="max-w-3xl">
-                    <span className="text-xs font-mono text-[#d4af37] tracking-widest block mb-2">
-                      {project.index}
-                    </span>
-                    
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif text-white tracking-tight leading-tight">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-neutral-400 max-w-2xl mt-4 text-base md:text-lg leading-relaxed font-sans">
-                      {project.description}
-                    </p>
-
+                  {/* Left: 3-Part Framework Highlights */}
+                  <div className="max-w-3xl flex-1">
                     {/* 3-Part Framework Highlights (Problem -> Solution -> Benefit) */}
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-white/10 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/10 pt-6 text-xs">
                       <div>
                         <span className="text-[#d4af37] font-mono block mb-1">01. {labels.problem}</span>
                         <p className="text-neutral-400 line-clamp-3 leading-relaxed">{project.problem}</p>
