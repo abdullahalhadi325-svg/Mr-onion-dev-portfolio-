@@ -11,6 +11,11 @@ export interface HeroData {
   headlineSecondary: string;
   subheadline: string;
   image: string;
+  scarcityBadge?: {
+    visible: boolean;
+    text: string;
+    status: 'available' | 'booked';
+  };
   ctaPrimary: {
     label: string;
     targetId: string;
@@ -161,6 +166,11 @@ export const siteData: { en: LocaleContent; bn: LocaleContent } = {
       name: 'Abdullah Al Hadi',
       role: 'WEB & APP DEVELOPER · SYSTEM ARCHITECT',
       eyebrow: 'Full-Stack Architecture & High-Concurrency Systems',
+      scarcityBadge: {
+        visible: true,
+        text: 'Status: Accepting 1 Elite Project this Month',
+        status: 'available',
+      },
       headlinePrimary: 'Abdullah',
       headlineSecondary: 'Al Hadi',
       subheadline: 'I architect resilient full-stack systems, engineer scalable digital products, and code with AI.',
@@ -359,6 +369,11 @@ export const siteData: { en: LocaleContent; bn: LocaleContent } = {
       name: 'আব্দুল্লাহ আল হাদী',
       role: 'ওয়েব ও অ্যাপ ডেভেলপার · সিস্টেম আর্কিটেক্ট',
       eyebrow: 'ফুল-স্ট্যাক আর্কিটেকচার ও হাই-কনকারেন্সি সিস্টেমস',
+      scarcityBadge: {
+        visible: true,
+        text: 'স্ট্যাটাস: এই মাসে ১টি এলিট প্রজেক্ট গ্রহণ করা হবে',
+        status: 'available',
+      },
       headlinePrimary: 'আব্দুল্লাহ',
       headlineSecondary: 'আল হাদী',
       subheadline: 'আমি রেসিলিয়েন্ট ফুল-স্ট্যাক সিস্টেম আর্কিটেক্ট করি, ডিজিটাল প্রোডাক্ট বানাই এবং এআই দিয়ে কোড করি।',

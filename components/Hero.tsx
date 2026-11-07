@@ -103,6 +103,19 @@ export default function Hero({
     >
       <div className="flex flex-col items-center w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto pt-24 md:pt-32 lg:pt-36">
         
+        {/* SCARCITY STATUS BADGE */}
+        {data.scarcityBadge && data.scarcityBadge.visible && (
+          <div className="mb-10 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)] will-change-transform">
+            <div className="relative flex h-3 w-3">
+              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${data.scarcityBadge.status === 'available' ? 'bg-[#25D366]' : 'bg-red-500'}`}></span>
+              <span className={`relative inline-flex rounded-full h-3 w-3 ${data.scarcityBadge.status === 'available' ? 'bg-[#25D366]' : 'bg-red-500'}`}></span>
+            </div>
+            <span className="text-xs md:text-sm font-mono tracking-wider uppercase text-neutral-200">
+              {data.scarcityBadge.text}
+            </span>
+          </div>
+        )}
+
         {/* Eyebrow / Role Marker */}
         <p className={`text-xs md:text-sm tracking-[0.28em] text-[#d4af37] mb-6 uppercase font-mono will-change-transform ${isBn ? "font-['Hind_Siliguri']" : ''}`}>
           {data.eyebrow}

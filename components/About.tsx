@@ -270,6 +270,15 @@ export default function About({ data = siteData.en.about, lang = 'en' }: AboutPr
           >
             {data.bio}
           </p>
+
+          {/* Chris Do / Un-selling Aggressive Copy Block */}
+          <div className="mt-12 md:mt-16 p-8 border-l-2 border-[#d4af37] bg-neutral-900/50 backdrop-blur-sm">
+            <p className={`text-base md:text-lg lg:text-xl font-medium tracking-wide text-neutral-200 leading-relaxed ${isBn ? "font-['Hind_Siliguri']" : 'font-sans'}`}>
+              {isBn
+                ? "আমি সস্তা ওয়েবসাইট বানাই না। আমি স্কেলেবল ডিজিটাল ইঞ্জিন আর্কিটেক্ট করি। আপনি যদি স্কেল করতে প্রস্তুত না হন, তবে দয়া করে এই ট্যাবটি বন্ধ করুন।"
+                : "I don't build cheap websites. I architect scalable digital engines. If you're not ready to scale, close this tab."}
+            </p>
+          </div>
         </div>
 
         {/* 4. TECH STACK & PRODUCTION SYSTEMS ENGINEERED (ZERO PILL METADATA) */}

@@ -186,8 +186,8 @@ export default function Page() {
           style={{ willChange: 'transform, opacity' }}
         />
         {/* Adjusted Gradient Mask: Face and upper body remain crisp and brightly visible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 via-70% to-transparent pointer-events-none"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.55)_100%)] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 via-70% to-black/20 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.65)_100%)] pointer-events-none"></div>
       </div>
 
       {/* 
