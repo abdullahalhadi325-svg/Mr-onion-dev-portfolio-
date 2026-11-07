@@ -41,7 +41,14 @@ export async function getSiteContent(): Promise<SiteContentSchema> {
         const mergedEn: LocaleContent = {
           ...siteData.en,
           ...parsed.en,
-          hero: { ...siteData.en.hero, ...parsed.en.hero },
+          hero: {
+            ...siteData.en.hero,
+            ...parsed.en.hero,
+            scarcityBadge: {
+              ...(siteData.en.hero.scarcityBadge || { visible: false, text: '', status: 'available' }),
+              ...(parsed.en.hero?.scarcityBadge || {})
+            }
+          },
           about: { ...siteData.en.about, ...parsed.en.about },
           labels: { ...siteData.en.labels, ...parsed.en.labels },
           socialLinks: { ...siteData.en.socialLinks, ...parsed.en.socialLinks },
@@ -52,7 +59,14 @@ export async function getSiteContent(): Promise<SiteContentSchema> {
         const mergedBn: LocaleContent = {
           ...siteData.bn,
           ...parsed.bn,
-          hero: { ...siteData.bn.hero, ...parsed.bn.hero },
+          hero: {
+            ...siteData.bn.hero,
+            ...parsed.bn.hero,
+            scarcityBadge: {
+              ...(siteData.bn.hero.scarcityBadge || { visible: false, text: '', status: 'available' }),
+              ...(parsed.bn.hero?.scarcityBadge || {})
+            }
+          },
           about: { ...siteData.bn.about, ...parsed.bn.about },
           labels: { ...siteData.bn.labels, ...parsed.bn.labels },
           socialLinks: { ...siteData.bn.socialLinks, ...parsed.bn.socialLinks },

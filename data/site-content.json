@@ -20,6 +20,11 @@
       "ctaSecondary": {
         "label": "Start a Conversation",
         "url": "https://wa.me/8801934885834"
+      },
+      "scarcityBadge": {
+        "visible": true,
+        "text": "Status: Accepting 1 Elite Project this Month",
+        "status": "available"
       }
     },
     "about": {
@@ -270,6 +275,11 @@
       "ctaSecondary": {
         "label": "সরাসরি কথা বলুন",
         "url": "https://wa.me/8801934885834"
+      },
+      "scarcityBadge": {
+        "visible": true,
+        "text": "স্ট্যাটাস: এই মাসে ১টি এলিট প্রজেক্ট গ্রহণ করা হবে",
+        "status": "available"
       }
     },
     "about": {

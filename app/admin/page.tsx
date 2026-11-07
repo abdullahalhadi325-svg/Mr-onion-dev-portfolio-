@@ -67,7 +67,7 @@ function AdminContent() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   // Active editor tab and language
-  const [activeTab, setActiveTab] = useState<'hero' | 'about' | 'projects' | 'experience' | 'social'>('hero');
+  const [activeTab, setActiveTab] = useState<'hero' | 'about' | 'projects' | 'experience' | 'social' | 'marketing'>('hero');
   const [activeLocale, setActiveLocale] = useState<'en' | 'bn'>('en');
 
   // Working data store
@@ -721,6 +721,100 @@ function AdminContent() {
         {/* Dynamic Editor Panel */}
         <main className="flex-1 min-w-0 pb-16">
           
+          {/* TAB 6: MARKETING & SCARCITY */}
+          {activeTab === 'marketing' && (
+            <div className="space-y-8">
+              <div className="border-b border-white/10 pb-4">
+                <h3 className="text-xl font-serif text-white">Marketing & Scarcity Control</h3>
+                <p className="text-xs font-mono text-neutral-400 mt-1">
+                  Control the high-converting scarcity badge and psychological triggers on the hero section.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <label className="text-xs font-mono text-neutral-400 uppercase">Enable Scarcity Badge</label>
+                  <button
+                    onClick={() => {
+                      const currentVal = currentContent.hero.scarcityBadge?.visible;
+                      setDataStore(prev => ({
+                        ...prev,
+                        [activeLocale]: {
+                          ...prev[activeLocale],
+                          hero: {
+                            ...prev[activeLocale].hero,
+                            scarcityBadge: {
+                              ...(prev[activeLocale].hero.scarcityBadge || {text: '', status: 'available'}),
+                              visible: !currentVal,
+                            }
+                          }
+                        }
+                      }));
+                    }}
+                    className={`w-12 h-6 rounded-full transition-colors relative cursor-pointer ${currentContent.hero.scarcityBadge?.visible ? 'bg-[#25D366]' : 'bg-neutral-800'}`}
+                  >
+                    <span className={`absolute top-1/2 -translate-y-1/2 left-1 w-4 h-4 rounded-full bg-white transition-transform ${currentContent.hero.scarcityBadge?.visible ? 'translate-x-6' : 'translate-x-0'}`} />
+                  </button>
+                </div>
+
+                {currentContent.hero.scarcityBadge?.visible && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-neutral-950 border border-white/10 rounded-sm">
+                    <div>
+                      <label className="text-xs font-mono text-neutral-400 block mb-2 uppercase">Badge Status</label>
+                      <select
+                        value={currentContent.hero.scarcityBadge?.status || 'available'}
+                        onChange={(e) => {
+                          setDataStore(prev => ({
+                            ...prev,
+                            [activeLocale]: {
+                              ...prev[activeLocale],
+                              hero: {
+                                ...prev[activeLocale].hero,
+                                scarcityBadge: {
+                                  ...(prev[activeLocale].hero.scarcityBadge || {visible: false, text: ''}),
+                                  status: e.target.value as 'available' | 'booked',
+                                }
+                              }
+                            }
+                          }));
+                        }}
+                        className="w-full bg-black border border-white/20 rounded-sm px-4 py-2 text-sm text-white focus:border-white focus:outline-none"
+                      >
+                        <option value="available">🟢 Available (Green)</option>
+                        <option value="booked">🔴 Fully Booked (Red)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-mono text-neutral-400 block mb-2 uppercase">Badge Text</label>
+                      <input
+                        type="text"
+                        value={currentContent.hero.scarcityBadge?.text || ''}
+                        onChange={(e) => {
+                          setDataStore(prev => ({
+                            ...prev,
+                            [activeLocale]: {
+                              ...prev[activeLocale],
+                              hero: {
+                                ...prev[activeLocale].hero,
+                                scarcityBadge: {
+                                  ...(prev[activeLocale].hero.scarcityBadge || {visible: false, status: 'available'}),
+                                  text: e.target.value,
+                                }
+                              }
+                            }
+                          }));
+                        }}
+                        className="w-full bg-black border border-white/20 rounded-sm px-4 py-2 text-sm text-white focus:border-white focus:outline-none"
+                        placeholder="e.g. Status: Accepting 1 Elite Project this Month"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* TAB 1: HERO SECTION & PORTRAIT */}
           {activeTab === 'hero' && (
             <div className="space-y-8">
