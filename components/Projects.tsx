@@ -4,7 +4,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { X, ExternalLink, Play, Image as ImageIcon } from 'lucide-react';
+import { X, ExternalLink, Play, Image as ImageIcon, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ProjectItem, siteData, LocaleContent } from '@/lib/siteData';
 
 interface ProjectsProps {
@@ -36,6 +37,7 @@ export default function Projects({
   const headerRef = useRef<HTMLDivElement | null>(null);
   const [activeStory, setActiveStory] = useState<ProjectItem | null>(null);
   const [mediaMode, setMediaMode] = useState<Record<string, 'video' | 'image'>>({});
+  const [expandedProject, setExpandedProject] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -172,10 +174,11 @@ export default function Projects({
           </h2>
         </div>
 
-        {/* 2. VERTICAL PROJECT STACK (MASSIVE NEGATIVE SPACE, NO CLUTTERED CARDS) */}
-        <div className="relative z-10 space-y-36 md:space-y-64">
+        {/* 2. BENTO GRID LAYOUT */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {projects.map((project) => {
             const projectId = project.id || `project-${project.index}`;
+            const isExpanded = expandedProject === projectId;
             const embedUrl = getYouTubeEmbedUrl(project.youtubeUrl);
             const userPref = mediaMode[projectId];
             const showVideo = Boolean(embedUrl && (userPref === undefined ? true : userPref === 'video'));
@@ -184,22 +187,27 @@ export default function Projects({
               <article key={projectId} className="project-item flex flex-col w-full">
                 
                 {/* Project Header: Index, Title & Description (Moved Above Media) */}
-                <div className="max-w-3xl mb-8">
-                  <span className="text-xs font-mono text-[#d4af37] tracking-widest block mb-2">
-                    {project.index}
-                  </span>
+                <div className="mb-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-xs font-mono text-[#d4af37] tracking-widest block">
+                      {project.index}
+                    </span>
+                    <span className="text-[10px] font-mono tracking-widest uppercase text-white/90 bg-black/80 backdrop-blur-md px-2 py-1 rounded-sm border border-white/10">
+                      {project.tag}
+                    </span>
+                  </div>
 
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif text-white tracking-tight leading-tight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white tracking-tight leading-tight">
                     {project.title}
                   </h3>
 
-                  <p className="text-neutral-400 max-w-2xl mt-4 text-base md:text-lg leading-relaxed font-sans">
+                  <p className="text-neutral-400 mt-4 text-sm md:text-base leading-relaxed font-sans line-clamp-3">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Media Container: Either Sleek YouTube Iframe or Parallax Image Container */}
-                <div className="w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[2.35/1] overflow-hidden bg-neutral-950 rounded-sm mb-8 relative border border-white/10 group">
+                <div className="w-full aspect-[16/9] overflow-hidden bg-neutral-950 rounded-sm mb-6 relative border border-white/10 group">
                   
                   {showVideo && embedUrl ? (
                     <div className="w-full h-full relative bg-black">
@@ -231,19 +239,12 @@ export default function Projects({
                     </>
                   )}
 
-                  {/* Top Left: Category Tag */}
-                  <div className="absolute top-6 left-6 z-10 pointer-events-none">
-                    <span className="text-[11px] font-mono tracking-widest uppercase text-white/90 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-sm border border-white/10">
-                      {project.tag}
-                    </span>
-                  </div>
-
                   {/* Top Right: Video / Image Toggle if both are available */}
                   {embedUrl && (
-                    <div className="absolute top-6 right-6 z-10">
+                    <div className="absolute top-4 right-4 z-10">
                       <button
                         onClick={() => toggleMedia(projectId, showVideo)}
-                        className="flex items-center gap-2 text-[11px] font-mono tracking-wider uppercase text-white bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-sm border border-white/20 hover:border-white transition-colors cursor-pointer"
+                        className="flex items-center gap-2 text-[10px] font-mono tracking-wider uppercase text-white bg-black/80 backdrop-blur-md px-2 py-1.5 rounded-sm border border-white/20 hover:border-white transition-colors cursor-pointer"
                       >
                         {showVideo ? (
                           <>
@@ -263,66 +264,86 @@ export default function Projects({
                 </div>
 
                 {/* Project Content Below Image */}
-                <div className="project-content flex flex-col md:flex-row md:items-start justify-between gap-8 pt-4">
+                <div className="project-content flex flex-col pt-4">
                   
-                  {/* Left: 3-Part Framework Highlights */}
-                  <div className="max-w-3xl flex-1">
-                    {/* 3-Part Framework Highlights (Problem -> Solution -> Benefit) */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/10 pt-6 text-xs">
-                      <div>
-                        <span className="text-[#d4af37] font-mono block mb-1">01. {labels.problem}</span>
-                        <p className="text-neutral-400 line-clamp-3 leading-relaxed">{project.problem}</p>
-                      </div>
-                      <div>
-                        <span className="text-neutral-300 font-mono block mb-1">02. {labels.solution}</span>
-                        <p className="text-neutral-400 line-clamp-3 leading-relaxed">{project.solution}</p>
-                      </div>
-                      <div>
-                        <span className="text-white font-mono block mb-1">03. {labels.benefit}</span>
-                        <p className="text-neutral-400 line-clamp-3 leading-relaxed">{project.benefit}</p>
-                      </div>
-                    </div>
-
-                    {/* Actions Row: View Live Site Button (ONLY when liveUrl exists) + Case Study Modal */}
-                    <div className="mt-8 flex flex-wrap items-center gap-5">
-                      
-                      {/* CONDITIONAL "View Live Site ↗" BUTTON */}
-                      {Boolean(project.liveUrl && project.liveUrl.trim().length > 0) && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-mono tracking-wider uppercase font-semibold transition-all cursor-pointer shadow-[0_0_15px_rgba(255,255,255,0.15)] active:scale-95"
-                        >
-                          <span>{labels.viewLiveSite || 'View Live Site ↗'}</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      )}
-
-                      {/* Explore Deep Case Study */}
-                      <button
-                        onClick={() => setActiveStory(project)}
-                        className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-mono text-neutral-300 hover:text-white border-b border-white/30 hover:border-white pb-1 transition-colors cursor-pointer"
-                      >
-                        <span>{labels.exploreStory}</span>
-                        <span className="text-sm">↗</span>
-                      </button>
-
-                    </div>
-                  </div>
-
-                  {/* Right: Key metrics summary */}
-                  <div className="shrink-0 flex md:flex-col gap-6 md:gap-4 md:border-l md:border-white/10 md:pl-8 text-left">
+                  {/* High-impact Metrics (Shown Prominently) */}
+                  <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-white/10">
                     {project.metrics.map((metric, i) => (
                       <div key={i} className="flex flex-col">
-                        <span className="text-2xl md:text-3xl font-light font-sans text-white tabular-nums">
+                        <span className="text-xl md:text-2xl font-light font-sans text-white tabular-nums">
                           {metric.value}
                         </span>
-                        <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mt-0.5">
+                        <span className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase mt-1">
                           {metric.label}
                         </span>
                       </div>
                     ))}
+                  </div>
+
+                  {/* Accordion for Technical Details */}
+                  <div className="mb-6">
+                    <button
+                      onClick={() => setExpandedProject(isExpanded ? null : projectId)}
+                      className="w-full flex items-center justify-between text-xs font-mono uppercase tracking-widest text-neutral-300 hover:text-white transition-colors"
+                    >
+                      <span>Technical Architecture</span>
+                      <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          className="overflow-hidden"
+                        >
+                          <div className="grid grid-cols-1 gap-4 pt-6 text-xs border-t border-white/5 mt-4">
+                            <div>
+                              <span className="text-[#d4af37] font-mono block mb-1">01. {labels.problem}</span>
+                              <p className="text-neutral-400 leading-relaxed">{project.problem}</p>
+                            </div>
+                            <div>
+                              <span className="text-neutral-300 font-mono block mb-1">02. {labels.solution}</span>
+                              <p className="text-neutral-400 leading-relaxed">{project.solution}</p>
+                            </div>
+                            <div>
+                              <span className="text-white font-mono block mb-1">03. {labels.benefit}</span>
+                              <p className="text-neutral-400 leading-relaxed">{project.benefit}</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Actions Row: View Live Site Button (ONLY when liveUrl exists) + Case Study Modal */}
+                  <div className="mt-auto pt-4 flex flex-wrap items-center gap-4 justify-between border-t border-white/5">
+
+                    {/* CONDITIONAL "View Live Site ↗" BUTTON */}
+                    {Boolean(project.liveUrl && project.liveUrl.trim().length > 0) && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black hover:bg-neutral-200 text-[10px] font-mono tracking-wider uppercase font-semibold transition-all cursor-pointer shadow-[0_0_15px_rgba(255,255,255,0.15)] active:scale-95"
+                      >
+                        <span>{labels.viewLiveSite || 'View Live Site ↗'}</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+
+                    {/* Explore Deep Case Study */}
+                    <button
+                      onClick={() => setActiveStory(project)}
+                      className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-mono text-neutral-300 hover:text-white transition-colors cursor-pointer ml-auto"
+                    >
+                      <span>{labels.exploreStory}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </button>
+
                   </div>
 
                 </div>
