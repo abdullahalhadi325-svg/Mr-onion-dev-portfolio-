@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Linkedin, Github, MessageCircle, Mail, Instagram, Facebook } from 'lucide-react';
+import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { HeroData, SocialLinks, siteData } from '@/lib/siteData';
 import { MagneticButton, MagneticAnchor } from '@/components/MagneticButton';
@@ -106,11 +107,12 @@ export default function Hero({
         {/* SCARCITY STATUS BADGE */}
         {data.scarcityBadge && data.scarcityBadge.visible && (
           <div className="mb-10 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)] will-change-transform">
-            <div className="relative flex h-3 w-3">
-              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${data.scarcityBadge.status === 'available' ? 'bg-[#25D366]' : 'bg-red-500'}`}></span>
-              <span className={`relative inline-flex rounded-full h-3 w-3 ${data.scarcityBadge.status === 'available' ? 'bg-[#25D366]' : 'bg-red-500'}`}></span>
-            </div>
-            <span className="text-xs md:text-sm font-mono tracking-wider uppercase text-neutral-200">
+            <motion.div
+              className={`relative flex h-3 w-3 rounded-full ${data.scarcityBadge.status === 'available' ? 'bg-[#25D366]' : 'bg-red-500'}`}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            />
+            <span className="text-xs md:text-sm font-mono font-bold tracking-wider uppercase text-white/90">
               {data.scarcityBadge.text}
             </span>
           </div>
@@ -126,17 +128,17 @@ export default function Hero({
           ref={headlineRef}
           className={`leading-[0.92] tracking-tight text-white select-none ${
             isBn
-              ? "font-['Tiro_Bangla'] text-[11vw] sm:text-[9vw] md:text-[7.5vw] lg:text-[6.5vw] xl:text-[88px] font-normal"
-              : 'font-serif text-[12vw] sm:text-[10vw] md:text-[8.5vw] lg:text-[7.2vw] xl:text-[96px] font-normal'
+              ? "font-['Tiro_Bangla'] text-[11vw] sm:text-[9vw] md:text-[7.5vw] lg:text-[6.5vw] xl:text-[88px] font-bold"
+              : 'font-serif text-[12vw] sm:text-[10vw] md:text-[8.5vw] lg:text-[7.2vw] xl:text-[96px] font-bold'
           }`}
         >
           <div className="overflow-hidden inline-block w-full">
-            <span className="headline-reveal-line block will-change-transform">
+            <span className="headline-reveal-line block will-change-transform text-white">
               {data.headlinePrimary}
             </span>
           </div>
           <div className="overflow-hidden inline-block w-full mt-1 lg:mt-2">
-            <span className={`headline-reveal-line block will-change-transform ${isBn ? 'not-italic text-white/90' : 'italic text-neutral-200'}`}>
+            <span className={`headline-reveal-line block will-change-transform ${isBn ? 'not-italic text-white' : 'italic text-white/90'}`}>
               {data.headlineSecondary}
             </span>
           </div>

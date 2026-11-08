@@ -1197,6 +1197,18 @@ function AdminContent() {
                   className="w-full bg-neutral-950 border border-white/15 rounded-sm p-4 text-sm text-white focus:border-white focus:outline-none leading-relaxed"
                 />
               </div>
+
+              {/* Unselling Copy */}
+              <div className="space-y-4 pt-6 border-t border-white/10">
+                <label className="text-xs font-mono text-neutral-400 block uppercase">Aggressive Unselling Copy</label>
+                <textarea
+                  rows={3}
+                  value={currentContent.about.unsellingCopy || ''}
+                  onChange={(e) => updateAboutField('unsellingCopy', e.target.value)}
+                  className="w-full bg-neutral-950 border border-white/15 rounded-sm p-4 text-sm text-white focus:border-white focus:outline-none leading-relaxed"
+                  placeholder="e.g. My minimum engagement starts high because the ROI I deliver is exponential..."
+                />
+              </div>
             </div>
           )}
 

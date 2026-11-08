@@ -43,6 +43,7 @@ export interface AboutData {
   headlinePrimary: string;
   headlineSecondary: string;
   bio: string;
+  unsellingCopy?: string;
   stats: StatItem[];
   quote: string;
   quoteAuthor: string;
@@ -168,7 +169,7 @@ export const siteData: { en: LocaleContent; bn: LocaleContent } = {
       eyebrow: 'Full-Stack Architecture & High-Concurrency Systems',
       scarcityBadge: {
         visible: true,
-        text: 'Status: Accepting 1 Elite Project this Month',
+        text: 'Only 1 Slot Left for Q1 High-Ticket Engineering/Design Partner',
         status: 'available',
       },
       headlinePrimary: 'Abdullah',
@@ -188,7 +189,8 @@ export const siteData: { en: LocaleContent; bn: LocaleContent } = {
       eyebrow: '01 / ARCHITECTURAL IDENTITY',
       headlinePrimary: 'Engineering beyond conventional code.',
       headlineSecondary: 'Systems built for real human impact.',
-      bio: 'At 17, I operate as an Elite Full-Stack System Architect, Web & App Developer, and the founder of Future Builders. With deep mastery in cutting-edge frontend and backend architectures, AI-augmented engineering, and cybersecurity threat mitigation, I build digital engines that thrive under extreme scale.',
+      bio: "I don't just write code; I architect high-ticket, scalable digital systems. If you're looking for a low-budget freelancer, you're in the wrong place. I partner exclusively with serious businesses ready to scale.",
+      unsellingCopy: "My minimum engagement starts high because the ROI I deliver is exponential. If you're not ready to invest in serious architecture, close this tab.",
       stats: [
         { value: '50+', label: 'PROJECTS COMPLETED' },
         { value: '17', label: 'YRS OLD / SYSTEM ARCHITECT' },
@@ -391,7 +393,8 @@ export const siteData: { en: LocaleContent; bn: LocaleContent } = {
       eyebrow: '০১ / আর্কিটেকচারাল পরিচিতি',
       headlinePrimary: 'প্রথাগত কোডিংয়ের চেয়ে অনেক দূর।',
       headlineSecondary: 'বাস্তব মানুষের ক্ষমতায়নে নির্মিত সিস্টেম।',
-      bio: '১৭ বছর বয়সে আমি কাজ করছি এলিট ফুল-স্ট্যাক সিস্টেম আর্কিটেক্ট, ওয়েব ও অ্যাপ ডেভেলপার এবং ফিউচার বিল্ডার্স-এর প্রতিষ্ঠাতা হিসেবে। গভীর ফ্রন্টএন্ড-ব্যাকএন্ড দক্ষতা, এআই-নির্ভর কোডিং কৌশল এবং সাইবার সিকিউরিটি থ্রেট প্রতিরোধে আমি তৈরি করি চরম স্কেলে টেকসই ডিজিটাল ইঞ্জিন।',
+      bio: "আমি শুধুমাত্র কোড লিখি না; আমি হাই-টিকেট, স্কেলেবল ডিজিটাল সিস্টেম আর্কিটেক্ট করি। আপনি যদি লো-বাজেট ফ্রিল্যান্সার খুঁজে থাকেন, তবে আপনি ভুল জায়গায় আছেন। আমি শুধুমাত্র সিরিয়াস বিজনেসগুলোর সাথেই কাজ করি যারা স্কেল করতে প্রস্তুত।",
+      unsellingCopy: "আমার ন্যূনতম এঙ্গেজমেন্ট অনেক বেশি কারণ আমি যে আরওআই (ROI) প্রদান করি তা বহুগুণ। আপনি যদি সিরিয়াস আর্কিটেকচারে ইনভেস্ট করতে প্রস্তুত না হন, তবে এই ট্যাবটি বন্ধ করুন।",
       stats: [
         { value: '৫০+', label: 'সম্পন্ন প্রজেক্ট' },
         { value: '১৭', label: 'বছর বয়স / সিস্টেম আর্কিটেক্ট' },
