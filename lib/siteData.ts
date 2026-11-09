@@ -166,15 +166,16 @@ export const siteData: { en: LocaleContent; bn: LocaleContent } = {
     hero: {
       name: 'Abdullah Al Hadi',
       role: 'WEB & APP DEVELOPER · SYSTEM ARCHITECT',
-      eyebrow: 'Full-Stack Architecture & High-Concurrency Systems',
+      eyebrow: 'System Architect',
       scarcityBadge: {
         visible: true,
         text: 'Only 1 Slot Left for Q1 High-Ticket Engineering/Design Partner',
         status: 'available',
       },
-      headlinePrimary: 'Abdullah',
-      headlineSecondary: 'Al Hadi',
-      subheadline: 'I architect resilient full-stack systems, engineer scalable digital products, and code with AI.',
+      headlinePrimary: 'Abdullah Al Hadi.',
+      headlineSecondary: '',
+
+      subheadline: 'I design and build scalable backend architectures and digital products for high-traffic environments.',
       image: '/hero.png',
       ctaPrimary: {
         label: 'Explore Selected Work',
